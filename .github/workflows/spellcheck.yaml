@@ -1,15 +1,18 @@
 on:
-  puhs:
+  pull_request:
+  push:
     branches:
-      - develop
-
-name: "Check shell script"
+      - main
 
 jobs:
-  spellcheck:
-    name: Shellcheck
+  prettier:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v
-      - name: Run Shellcheck
-        uses: ludeeus/action-shellcheck@master
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prettify code
+        uses: creyD/prettier_action@v4.6
+        with:
+          prettier_options: --write **/*.{html,css}
