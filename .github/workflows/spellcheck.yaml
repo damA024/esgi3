@@ -1,0 +1,15 @@
+on:
+  puhs:
+    branches:
+      - develop
+
+name: "Check shell script"
+
+jobs:
+  spellcheck:
+    name: Shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v
+      - name: Run Shellcheck
+        uses: ludeeus/action-shellcheck@master
